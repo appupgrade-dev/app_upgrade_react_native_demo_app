@@ -30,6 +30,7 @@ To get started, clone the repo:
    | `appVersion`  | Your app version. Required. |
    | `platform`  | Your app platform, ex: android or iOS. Required. |
    | `environment`  | Your app enviroment, ex: dev, stating, production. Required. |
+   | `appLanguage`  | Your app language, ex: en, es. Optional. |
 
    Example:
 
@@ -41,6 +42,7 @@ To get started, clone the repo:
         appVersion: '1.0.0', // Your app version
         platform: 'android', // App Platform, android or ios
         environment: 'production', // App Environment, production, development
+        appLanguage: 'en', // Your app language, ex: en, es.
     };
    ```
 
