@@ -67,7 +67,7 @@ const App: () => Node = () => {
 
   const xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5"; // Your project key
   const appInfo = {
-    appId: 'com.numu.market', // Your app url in play store or app store
+    appId: 'com.android.chrome', // Your app url in play store or app store
     appName: 'Wallpaper app', // Your app name
     appVersion: '1.0.0', // Your app version
     platform: 'android', // App Platform, android or ios
