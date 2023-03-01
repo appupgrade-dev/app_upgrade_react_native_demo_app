@@ -29,7 +29,10 @@ import {
 /**
  * Import App Upgrade React Native SDK
  */
-import {appUpgradeVersionCheck} from 'app-upgrade-react-native-sdk';
+import {
+  appUpgradeVersionCheck,
+  PreferredAndroidMarket,
+} from 'app-upgrade-react-native-sdk';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -64,12 +67,14 @@ const App: () => Node = () => {
 
   const xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5"; // Your project key
   const appInfo = {
-    appId: 'com.android.com', // Your app url in play store or app store
+    appId: 'com.numu.market', // Your app url in play store or app store
     appName: 'Wallpaper app', // Your app name
     appVersion: '1.0.0', // Your app version
     platform: 'android', // App Platform, android or ios
     environment: 'production', // App Environment, production, development
     appLanguage: 'es', // App Environment, production, development
+    // preferredAndroidMarket: PreferredAndroidMarket.HUAWEI, // or PreferredAndroidMarket.HUAWEI or PreferredAndroidMarket.OTHER If not provided default is Google playstore. Optional
+    // otherAndroidMarketUrl: 'https://someotherandroidmarket.com/app/id'// Required if preferredAndroidMarket is Other.
   };
 
   // Alert config is optional
