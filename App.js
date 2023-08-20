@@ -75,6 +75,10 @@ const App: () => Node = () => {
     appLanguage: 'es', // App Environment, production, development
     // preferredAndroidMarket: PreferredAndroidMarket.HUAWEI, // or PreferredAndroidMarket.HUAWEI or PreferredAndroidMarket.OTHER If not provided default is Google playstore. Optional
     // otherAndroidMarketUrl: 'https://someotherandroidmarket.com/app/id'// Required if preferredAndroidMarket is Other.
+    customAttributes: {
+      os: 12,
+      country: 'IN',
+    },
   };
 
   // Alert config is optional
