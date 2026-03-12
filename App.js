@@ -29,10 +29,10 @@ import {
 /**
  * Import App Upgrade React Native SDK
  */
-import {
-  appUpgradeVersionCheck,
-  PreferredAndroidMarket,
-} from 'app-upgrade-react-native-sdk';
+import { appUpgradeVersionCheck, AppUpgradeClient } from 'app-upgrade-react-native-sdk';
+import type { AppInfo, AlertInfo } from 'app-upgrade-react-native-sdk';
+import { Platform } from 'react-native';
+import { useEffect, useMemo } from 'react';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -65,36 +65,38 @@ const Section = ({children, title}): Node => {
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const xApiKey = "ZWY0ZDhjYjgtYThmMC00NTg5LWI0NmUtMjM5OWZkNjkzMzQ5"; // Your project key
-  const appInfo = {
-    appId: 'com.android.chrome', // Your app id in play store or app store
-    appName: 'Wallpaper app', // Your app name
-    appVersion: '1.0.0', // Your app version
-    platform: 'android', // App Platform, android or ios
-    environment: 'production', // App Environment, production, development
-    appLanguage: 'es', // App Environment, production, development
-    // preferredAndroidMarket: PreferredAndroidMarket.HUAWEI, // or PreferredAndroidMarket.HUAWEI or PreferredAndroidMarket.OTHER If not provided default is Google playstore. Optional
-    // otherAndroidMarketUrl: 'https://someotherandroidmarket.com/app/id'// Required if preferredAndroidMarket is Other.
-    customAttributes: {
-      os: 12,
-      country: 'IN',
-    },
-  };
-
-  // Alert config is optional
-  const alertConfig = {
-    title: 'Please Update',
-    updateButtonTitle: 'Update Now',
-    laterButtonTitle: 'Later',
-    onDismissCallback: () => { console.log('Dismiss') },
-    onLaterCallback: () => { console.log('Later') }
-  };
-
-  appUpgradeVersionCheck(appInfo, xApiKey, alertConfig);
-
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  const appUpgradeClient = useMemo(() => new AppUpgradeClient({
+    apiKey: 'NmRmOWU1MGEtNTFmYi00ZjgyLWI4ZWQtYTU1Nzg0MDBiZjkz',
+    debug: true
+  }), []);
+
+  const appInfo: AppInfo = useMemo(() => ({
+    appId: Platform.OS === 'ios' ? '1234567890' : 'com.google.chrome',
+    // iOS: numeric App Store ID (not bundle ID)
+    // Android: applicationId / package name
+    appName: 'Wallpaper app',
+    appVersion: '1.0.1',
+    platform: Platform.OS,            // 'android' | 'ios'
+    environment: 'production',        // 'production' | 'development'
+    appLanguage: 'es',                // Optional — for localized messages
+  }), []);
+
+  const alertConfig: AlertInfo = {    // Optional
+    title: 'Update Available',
+    updateButtonTitle: 'Update Now',
+    laterButtonTitle: 'Later..',
+    onDismissCallback: () => console.log('Dismissed'),
+    onLaterCallback: () => console.log('Later'),
+    onUpdateCallback: () => console.log('Updating'),
+  };
+
+  useEffect(() => {
+    appUpgradeVersionCheck(appUpgradeClient, appInfo, alertConfig);
+  }, [appUpgradeClient, appInfo]);
 
   return (
     <SafeAreaView style={backgroundStyle}>

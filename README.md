@@ -2,6 +2,7 @@
 
 [App Upgrade: React-Native Demo App](https://github.com/appupgrade-dev/app_upgrade_react_native_demo_app) is a sample react-native app integrated with [App Upgrade React-Native SDK](https://www.npmjs.com/package/app-upgrade-react-native-sdk) to demonstrate how Force upgrade works in react-native app with [App Upgrade](https://appupgrade.dev). 
 
+For SDK v1.x please refer to this [README](https://github.com/appupgrade-dev/app_upgrade_react_native_demo_app/tree/v1.x).
 
 ## Installation
 
@@ -42,20 +43,6 @@ If you want users to redirect to store other than app store or playstore. You ca
 
 - preferredAndroidMarket: PreferredAndroidMarket.OTHER
 - otherAndroidMarketUrl: 'https://someotherandroidmarket.com/app/id'// Required if preferredAndroidMarket is other.   
-
-   Example:
-
-   ```js
-    const xApiKey = 'YjhlZjdlMWMtODJhMC00YWZiLTk3MTktZmQ0ZmNmZjI0ODQ0';
-    const appInfo = {
-        appId: 'com.microsoft.bing',
-        appName: 'Wallpaper app', // Your app name
-        appVersion: '1.0.0', // Your app version
-        platform: 'android', // App Platform, android or ios
-        environment: 'production', // App Environment, production, development
-        appLanguage: 'en', // Your app language, ex: en, es.
-    };
-   ```
 
 1. Save `App.js` file.
 
